@@ -19,12 +19,6 @@ make tree_comp
 ```
 
 **Como executar:**
-##### **1. Execução com profundidade padrão 3:**
-```bash
-make tree
-```
-
-##### **2. Execução tree:**
 ```
 ./tree.o <profundidade>
 ```
