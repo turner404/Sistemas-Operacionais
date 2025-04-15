@@ -19,7 +19,7 @@ make tree_comp
 ```
 
 **Como executar:**
-```
+```bash
 make tree
 ```
 
@@ -44,11 +44,10 @@ make command_comp
 **Como executar:**
 ##### **1. Execução com comando ping:**
 ```bash
-// Execução com comando ping
 make command
 ```
 ##### **2. Execução informando comando:**
-```
+```bash
 ./commandChild.o <comando> [argumentos...]
 ```
 
