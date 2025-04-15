@@ -13,21 +13,22 @@ int main(int argn, char** argv){
 	
 	// Verifica se algo foi passado como argumento
 	if(argn < 2){
-		printf("Eu preciso de um comando, mestre.\n");
+		printf("Execute informando um comando.\n");
 		exit(1);
 	}
 	
 	// Gera uma lista contendo os argumentos para a execução do comando
-	char **argv2 = malloc(sizeof(char*) * (argn - 1));
-	for(int argi = 2; argi < argn; argi ++){
-		argv2[argi - 2] = argv[argi];
+	char **argv2 = malloc(sizeof(char*) * (argn));
+	for(int i = 0; i < argn-1; i++){
+		argv2[i] = argv[i+1];
 	}
-	argv2[argn - 2] = (char *) 0;
-	
+
+	argv2[argn-1] = NULL; // O último argumento deve ser NULL para o execvp funcionar
+
 	// Gera um processo filho e executa nele o comando dado
-	if(fork() == 0){ // Processo filho
-		execv(argv[1], argv2);
-		printf("Erro ao executar comando");
+	if(!fork()){ // Processo filho
+		execvp(argv2[0], argv2);
+		printf("Erro ao executar comando\n");
 		exit(1);
 	}
 
@@ -36,5 +37,5 @@ int main(int argn, char** argv){
 	// Espera pelo fim do processo filho
 	wait(NULL);
 	
-	printf("Pronto, mestre.\n");
+	printf("Finalizado.\n");
 }
