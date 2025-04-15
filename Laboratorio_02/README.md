@@ -20,7 +20,7 @@ make tree_comp
 
 **Como executar:**
 ```
-./tree.o <profundidade>
+make tree
 ```
 
 ---
