@@ -1,4 +1,3 @@
-```markdown
 # 🧠 Atividades de Sistemas Operacionais
 
 Repositório contendo os códigos da **Atividade 2** da disciplina de Sistemas Operacionais.
