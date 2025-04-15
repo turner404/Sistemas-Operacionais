@@ -19,10 +19,18 @@ make tree_comp
 ```
 
 **Como executar:**
+##### **1. Execução com profundidade 3, com 2 filhos por processo, aguardando 20 segundos ao final:**
 ```bash
 make tree
 ```
-
+##### **2. Execução informando parâmetros:**
+```bash
+./tree.o -n [profundidade] -t [segundos] -c [filhos]
+```
+###### É possível visualizar a hierarquia de processos utilizando:
+```bash
+pstree <pid_pai>
+```
 ---
 
 ## CommandChild
