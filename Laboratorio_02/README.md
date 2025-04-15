@@ -19,7 +19,7 @@ make tree
 
 **Como executar:**
 ```bash
-./main
+./main <profundidade>
 ```
 
 Informe o número de galhos requeridos. Será criada uma sequência de `fork()` com o número de galhos desejado.
