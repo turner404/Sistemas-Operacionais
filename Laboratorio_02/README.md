@@ -4,13 +4,14 @@
 
 ## psTree
 
-Informe a profundidade da árvore a ser criada.
+Programa que cria uma árvore de processos.
 
 **Bibliotecas utilizadas:**
-- stdio.h  
+- stdio.h
+- stdlib.h 
 - sys/types.h  
-- unistd.h  
-- sys/wait.h  
+- unistd.h
+- string.h
 
 **Compilar o código:**
 ```bash
@@ -22,19 +23,17 @@ make tree
 ./main <profundidade>
 ```
 
-Informe o número de galhos requeridos. Será criada uma sequência de `fork()` com o número de galhos desejado.
-
 ---
 
 ## CommandChild
 
-Informe um comando, e o processo filho o executará.
+Programa que executa um comando, passado como argumento, em um processo filho e aguarda sua finalização.
 
 **Bibliotecas utilizadas:**
-- stdio.h  
+- stdio.h
+- stdlib.h
 - unistd.h  
 - sys/types.h  
-- string.h  
 - sys/wait.h  
 
 **Compilar o código:**
@@ -47,24 +46,19 @@ make command
 ./main <comando> [argumentos...]
 ```
 
-**Exemplos:**
-```bash
-./main ls -lha
-./main touch teste.txt
-```
-
 ---
 
 ## ArrayDivision
 
-Informe a quantidade de filhos, o tamanho do vetor e o valor a ser buscado.  
-O programa retornará a posição no array onde o valor estiver (caso exista).
+Programa que calcula a quantidade de ocorrências de um elemento em uma lista por meio de vários processos, imprimindo a posição de cada uma.
 
 **Bibliotecas utilizadas:**
-- stdio.h  
+- stdio.h
+- stdlib.h
 - unistd.h  
-- sys/types.h  
-- stdlib.h  
+- sys/types.h
+- string.h  
+- sys/wait.h
 
 **Compilar o código:**
 ```bash
@@ -78,7 +72,7 @@ make array
 
 ---
 
-## shellBasic
+## basicShell
 
 Uma simples interface de shell feita para rodar o comando desejado.  
 Pode ser usada como uma shell normal, com suporte a execução em segundo plano (`&`) e uso do operador pipe (`|`).
@@ -87,7 +81,8 @@ Pode ser usada como uma shell normal, com suporte a execução em segundo plano 
 - stdio.h  
 - unistd.h  
 - string.h  
-- sys/wait.h  
+- sys/wait.h
+- stdlib.h
 
 **Compilar o código:**
 ```bash
@@ -97,5 +92,4 @@ make shell
 **Como executar:**
 ```bash
 ./main
-```
 ```
