@@ -19,8 +19,14 @@ make tree_comp
 ```
 
 **Como executar:**
+##### **1. Execução com profundidade padrão 3:**
 ```bash
 make tree
+```
+
+##### **2. Execução tree:**
+```
+./tree.o <profundidade>
 ```
 
 ---
@@ -42,10 +48,13 @@ make command_comp
 ```
 
 **Como executar:**
+##### **1. Execução com comando ping:**
 ```bash
 // Execução com comando ping
 make command
-// Execução comando
+```
+##### **2. Execução informando comando:**
+```
 ./commandChild.o <comando> [argumentos...]
 ```
 
