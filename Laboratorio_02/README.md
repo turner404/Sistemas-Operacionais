@@ -15,12 +15,12 @@ Programa que cria uma árvore de processos.
 
 **Compilar o código:**
 ```bash
-make tree
+make tree_comp
 ```
 
 **Como executar:**
 ```bash
-./main <profundidade>
+make tree
 ```
 
 ---
@@ -38,12 +38,15 @@ Programa que executa um comando, passado como argumento, em um processo filho e 
 
 **Compilar o código:**
 ```bash
-make command
+make command_comp
 ```
 
 **Como executar:**
 ```bash
-./main <comando> [argumentos...]
+// Execução com comando ping
+make command
+// Execução comando
+./commandChild.o <comando> [argumentos...]
 ```
 
 ---
@@ -62,12 +65,12 @@ Programa que calcula a quantidade de ocorrências de um elemento em uma lista po
 
 **Compilar o código:**
 ```bash
-make array
+make array_comp
 ```
 
 **Como executar:**
 ```bash
-./main
+make array
 ```
 
 ---
@@ -86,10 +89,10 @@ Pode ser usada como uma shell normal, com suporte a execução em segundo plano 
 
 **Compilar o código:**
 ```bash
-make shell
+make shell_comp
 ```
 
 **Como executar:**
 ```bash
-./main
+make shell
 ```
