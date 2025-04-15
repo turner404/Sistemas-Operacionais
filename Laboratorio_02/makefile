@@ -1,5 +1,5 @@
 tree:
-	gcc pstree.c -o main
+	g++ pstree.c++ -o pstree
 
 command:
 	gcc commandChild.c -o main
