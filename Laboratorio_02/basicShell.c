@@ -2,6 +2,31 @@
 // Autor: Victórya Carolina Guimarães da Luz
 // Data: 2025-04-13
 
+
+/* Comandos testados
+1. SISTEMA
+# uname -a - obter a versão do kernel
+# lsb_release -a - informação da distribuição Linux
+# cat /etc/debian_version - informação da versão do debian
+# uptime - tempo de sistema ativo e carga
+# hostname - nome da máquina
+# last - informações de login e outros
+# last reboot - informações de login e outros
+# dmesg - informações de detecção de hardware e mensagens de boot
+# lscpu - informações de cpu
+# lspci - informações de dispositivos pci
+# lsusb - informações de dispositivos usb
+# lshw - informações de hardware
+# watch -n1 'cat /proc/interrupts' - monitoramento das interrupções
+> ulimit -a - limites do sistema - Apresentou erro na execução
+# sysctl -a - limites do sistema
+
+2. PROCESSOS
+# disown -h %1 - desacopla do terminal, não finaliza ao fechar o terminal (ignora a solicitação de finalização)
+# nohup COMANDO > myoutput.log & - ignora sinais de HANGUP
+
+ulimit -a apresentou erro "Exec failed: No such file or directory"
+*/
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
