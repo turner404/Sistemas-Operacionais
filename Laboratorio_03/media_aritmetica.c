@@ -6,13 +6,17 @@
 #include <stdlib.h>     //atoi(), srand()
 #include <time.h>       //time() 
 #include <pthread.h>    //pthreads
+#include <string.h>     //strcmp()
 #include "matriz.h"
 
 #define M 10
 #define N 10
 
+#define ARQUIVO_DE_SAIDA "media_aritmetica.out"
+
 // Variáveis globais acessiveis a todas as threads
 int r, c;
+char caminhoDoArquivoMatriz[1000];
 
 void* avg_thread(void* arg){
     // linha da matriz sendo processada
@@ -34,6 +38,17 @@ void print_vector(int* v, int n){
     printf("\n");
 }
 
+void escreverListaDeResultados(int* result){
+    FILE *arquivo = fopen(ARQUIVO_DE_SAIDA, "w");  
+
+    for (int i = 0; i < r; i++) {
+        fprintf(arquivo, "%d\n", result[i]);
+    }
+
+    fclose(arquivo);
+}
+
+
 int main(int argc, char *argv[]) 
 { 
    r = M, c = N ;
@@ -43,18 +58,28 @@ int main(int argc, char *argv[])
       r = atoi(argv[1]);
       c = atoi(argv[2]);
    }
+   caminhoDoArquivoMatriz[0] = '\0';
 
+    for(int i = 0; i < argc; i++){
+        if(!strcmp(argv[i], "-am")){
+            sscanf(argv[i + 1], "%d", &r);
+        }else if(!strcmp(argv[i], "-cm")){
+            sscanf(argv[i + 1], "%d", &c);
+        }else if(!strcmp(argv[i], "-cam")){
+            sscanf(argv[i + 1], "%s", &caminhoDoArquivoMatriz);
+        }
+    }
+    int** matrix;
    /* lê a matriz a partir de um arquivo de entrada */   
-//    int **matrix = read_matrix_from_file("data_matriz_100_200.in", &r, &c);
-
-   /* gera uma matrix rxc e popula com valores pseudoaleatorios */
-   int **matrix = create_matrix(r, c);
-   srand(time(NULL));   // inicializa o gerador com uma semente.
-   generate_elements(matrix, r, c, 99);
-
-//    printf("%dx%d\n", r, c);
-//    print_matrix(matrix, r, c);
-
+   if(caminhoDoArquivoMatriz[0] != '\0'){
+        printf("Gerando a matriz...\n");
+        matrix = read_matrix_from_file(caminhoDoArquivoMatriz, &r, &c);
+    } else{
+        /* gera uma matrix rxc e popula com valores pseudoaleatorios */
+        matrix = create_matrix(r, c);
+        srand(time(NULL));   // inicializa o gerador com uma semente.
+        generate_elements(matrix, r, c, 99);
+    }
     // DIVISÃO DO PROBLEMA
     // Criar uma thread para processar cada linha da matriz
     /* ==========CRIAR 1 THREAD POR LINHA============================== */
@@ -81,8 +106,8 @@ int main(int argc, char *argv[])
     }
 
     // Montar vetor com resultado de todas as threads
-    printf("Resultado da media por linha:\n");
-    print_vector(results, r);
+    printf("Gerando arquivo com resultados...\n");
+    escreverListaDeResultados(results);
 
    return 0; 
 }

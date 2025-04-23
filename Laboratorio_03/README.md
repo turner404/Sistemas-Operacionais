@@ -4,15 +4,15 @@
 
 # busca_multithread
 
-Programa que utiliza múltiplas *threads* para buscar um valor específico dentro de um vetor de inteiros.  
+Programa que utiliza múltiplas _threads_ para buscar um valor específico dentro de um vetor de inteiros.  
 O vetor é dividido em partes iguais entre as threads, que realizam a busca em paralelo para acelerar o processo.
 
 **Bibliotecas utilizadas:**
 
-- `pthread.h` – para criação e manipulação de threads  
-- `stdlib.h` – para alocação dinâmica de memória  
-- `stdio.h` – para entrada e saída padrão  
-- `time.h` – para geração de números aleatórios com base no tempo  
+-   `pthread.h` – para criação e manipulação de threads
+-   `stdlib.h` – para alocação dinâmica de memória
+-   `stdio.h` – para entrada e saída padrão
+-   `time.h` – para geração de números aleatórios com base no tempo
 
 ---
 
@@ -21,16 +21,19 @@ O vetor é dividido em partes iguais entre as threads, que realizam a busca em p
 ```bash
 make
 ```
+
 **Como executar:**
 
 ```bash
 ./busca <tamanho_do_vetor> <quantidade_de_threads>
 ```
+
 Exemplo:
 
 ```bash
 ./busca 1000 4
 ```
+
 ---
 
 ## media_aritmetica
@@ -42,6 +45,7 @@ dos valores de cada linha.
 **Bibliotecas utilizadas:**
 
 -   stdio.h
+-   string.h
 -   stdlib.h
 -   time.h
 -   pthread.h
@@ -57,13 +61,13 @@ make aritmetica
 ##### **1. Execução informando tamanho:**
 
 ```bash
-./media_aritmetica.o [linhas] [colunas]
+./media_aritmetica.o -am [linhas] -cm [colunas]
 ```
 
 ##### **2. Execução informando nome do arquivo:**
 
 ```bash
-./media_aritmetica.o <nome_arquivo>
+./media_aritmetica.o -cam <nome_arquivo>
 ```
 
 ---
@@ -93,11 +97,11 @@ make geometrica
 ##### **1. Execução informando tamanho:**
 
 ```bash
-./media_geometrica.o [linhas] [colunas]
+./media_geometrica.o -am [linhas] -cm [colunas]
 ```
 
 ##### **2. Execução informando nome do arquivo:**
 
 ```bash
-./media_geometrica.o <nome_arquivo>
+./media_geometrica.o -cam <nome_arquivo>
 ```
