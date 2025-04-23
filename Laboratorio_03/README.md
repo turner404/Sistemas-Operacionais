@@ -2,26 +2,35 @@
 
 ---
 
-## busca_multithread
+# busca_multithread
 
-Programa que cria uma árvore de processos.
+Programa que utiliza múltiplas *threads* para buscar um valor específico dentro de um vetor de inteiros.  
+O vetor é dividido em partes iguais entre as threads, que realizam a busca em paralelo para acelerar o processo.
 
 **Bibliotecas utilizadas:**
 
--
+- `pthread.h` – para criação e manipulação de threads  
+- `stdlib.h` – para alocação dinâmica de memória  
+- `stdio.h` – para entrada e saída padrão  
+- `time.h` – para geração de números aleatórios com base no tempo  
+
+---
 
 **Compilar o código:**
 
 ```bash
 make
 ```
-
 **Como executar:**
 
 ```bash
-make
+./busca <tamanho_do_vetor> <quantidade_de_threads>
 ```
+Exemplo:
 
+```bash
+./busca 1000 4
+```
 ---
 
 ## media_aritmetica
