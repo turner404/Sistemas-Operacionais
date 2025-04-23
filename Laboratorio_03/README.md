@@ -19,7 +19,7 @@ O vetor é dividido em partes iguais entre as threads, que realizam a busca em p
 **Compilar o código:**
 
 ```bash
-make
+make busca
 ```
 
 **Como executar:**
