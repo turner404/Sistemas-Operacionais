@@ -7,10 +7,13 @@
 #include <stdlib.h>
 #include <sys/socket.h>
 #include <sys/un.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <unistd.h>
 
+// #define DEBUG
+
 /* especificar o path para mapear o socket */
-// char *socket_path = "./mysocket";
 char *socket_path = "\0myabstractsocket";
 
 int main(int argc, char *argv[])
@@ -20,10 +23,6 @@ int main(int argc, char *argv[])
         received_bytes;      // número de bytes recebidos
     struct sockaddr_un addr; // estrutura de endereço socket unix
     char buf[100];           // buffer para troca de mensagens
-
-    /* socket_path por parâmetro */
-    if (argc > 1)
-        socket_path = argv[1];
 
     /* cria socket UNIX do tipo SOCK_STREAM */
     if ((client_socket = socket(AF_UNIX, SOCK_STREAM, 0)) == -1)
@@ -51,14 +50,11 @@ int main(int argc, char *argv[])
         perror("connect error");
         exit(-1);
     }
-    /* lê dados do terminal e envia via sockets */
-    // while ((sent_bytes = read(STDIN_FILENO, buf, sizeof(buf))) > 0)
-    // {
+    printf("Digite uma mensagem para ser traduzida:");
+    fflush(stdout);
     while (1)
     {
-        printf(">");
-        fflush(stdout);
-
+        /* lê dados do terminal e envia via sockets */
         if ((sent_bytes = read(STDIN_FILENO, buf, sizeof(buf))) > 0)
         {
             if (write(client_socket, buf, sent_bytes) != sent_bytes)
@@ -71,13 +67,27 @@ int main(int argc, char *argv[])
                     exit(-1);
                 }
             }
-            /* lê dados envidos pelos clientes */
-            if ((received_bytes = read(client_socket, buf, sizeof(buf))) > 0)
-            {
 #ifdef DEBUG
-                printf("read %u bytes\n", received_bytes);
+            printf("%s", buf);
 #endif
-                printf("<%.*s\n", received_bytes, buf);
+            if (strncmp(buf, "NO-NO", 5) == 0)
+            {
+                printf("Saindo...\n");
+                return 0;
+            }
+            /* lê dados envidos pelo servidor e imprime na tela */
+            pid_t pid = fork();
+            if (!pid)
+            {
+                while ((received_bytes = read(client_socket, buf, sizeof(buf))) > 0)
+                {
+                    printf("< %.*s\n", received_bytes, buf);
+                    exit(0);
+                }
+            }
+            if (pid)
+            {
+                wait(NULL);
             }
         }
     }
