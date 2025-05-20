@@ -7,5 +7,5 @@ all: $(PROGS)
 clean:
 	rm -f $(PROGS)
 
-manipulador: graceful_file_handler.c
-	$(CC) graceful_file_handler.c -o manipulador
+manipulador: manipula_arquivo_graceful.c
+	$(CC) manipula_arquivo_graceful.c -o manipulador
