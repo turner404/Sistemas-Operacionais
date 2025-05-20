@@ -19,7 +19,7 @@ Se o processo for interrompido externamente por um sinal (`SIGINT` ou `SIGTERM`)
 - Tratamento de sinais (`signal`)
 - Finalização limpa (graceful stop)
 
-## 🛠️ Compilação
+## Compilação
 
 Para compilar o código, use o `gcc`:
 
